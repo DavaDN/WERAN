@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register User</title>
     <style>
-        /* Reset CSS */
         * {
             margin: 0;
             padding: 0;
@@ -27,8 +26,8 @@
             max-width: 400px;
             background: #fff;
             padding: 30px;
-            border-radius: 15px; /* Sudut membulat */
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Shadow lembut */
+            border-radius: 15px; 
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); 
             text-align: center;
         }
 
@@ -62,7 +61,7 @@
             padding: 10px;
             font-size: 14px;
             border: 1px solid #ddd;
-            border-radius: 10px; /* Sudut membulat */
+            border-radius: 10px; 
             outline: none;
             transition: all 0.3s;
         }
@@ -141,12 +140,13 @@
                 </div>
                 <div class="form-group">
                     <select name="role" id="role">
-                        <option value="Guest">Guest</option>
                         <option value="Staff">Staff</option>
                         <option value="Admin">Admin</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-user"></i> Register</button>
+                <br>
+                <br>
                 <hr>
                 <p class="text-center">Sudah punya akun silahkan <a href="login">Login Disini!</a></p>
             </form>

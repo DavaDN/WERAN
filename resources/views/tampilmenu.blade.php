@@ -1,3 +1,7 @@
+@section('konten')
+<h3>Tampil Data Menu</h3>
+<a class="btn btn-success" href="{{route('tambahmenu')}}"><i class="fa fa-plus"></i> Tambah Menu</a>
+@endsection
 <!DOCTYPE html>
 <html lang="en">
 <head>
