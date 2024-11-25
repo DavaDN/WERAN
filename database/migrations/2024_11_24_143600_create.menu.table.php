@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('menu', function (Blueprint $table) {
             $table->id();
-            $table->string('nm_menu');
-            $table->string('jns_menu');
-            $table->integer('hrg_menu');
+            $table->string('nama');
+            $table->string('jenis');
+            $table->integer('harga');
             $table->rememberToken();
             $table->timestamps();
         });

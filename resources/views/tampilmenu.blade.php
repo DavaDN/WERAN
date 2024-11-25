@@ -1,6 +1,29 @@
 @section('konten')
 <h3>Tampil Data Menu</h3>
-<a class="btn btn-success" href="{{route('tambahmenu')}}"><i class="fa fa-plus"></i> Tambah Menu</a>
+<a class="btn btn-success" href="{{route('tambahmenu')}}"><i class="fa fa-plus"></i> Tambah Menu</a><br><br>
+<table class="table table-bordered table-hover">
+  <tr>
+    <th>ID</th>
+    <th>Nama Menu</th>
+    <th>Jenis Menu</th>
+    <th>Harga Menu</th>
+    <th>Gambar Menu</th>
+    <th>Aksi</th>
+  </tr>
+  @foreach($menu as $m) 
+  <tr>
+    <td>{{$m->id}}</td>
+    <td>{{$m->nama}}</td>
+    <td>{{$m->jenis}}</td>
+    <td>{{$m->harga}}</td>
+    <td>{{$m->gambar}}</td>
+    <td>
+      <a href="/menu/ubah/{{$m->id}}" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
+      <a href="/menu/hapus/{{$m->id}}" onclick="return confirm('Apakah Anda Yakin Menghapus Data?');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+    </td>
+  </tr>
+  @endforeach
+</table>
 @endsection
 <!DOCTYPE html>
 <html lang="en">
@@ -121,6 +144,12 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             Kategori <span class="caret"></span>
                         </a>
+                        <ul class="dropdown-menu">
+                            <li><a>Main Course</a></li>
+                            <li><a>Appetizer</a></li>
+                            <li><a>Desert</a></li>
+                            <li><a>Beverage</a></li>
+                        </ul>
                     </li>
                     <!-- Menu Utama -->
                     <li><a href="/menu/tampil">Menu</a></li>
@@ -139,9 +168,6 @@
                         </ul>
                     </li>
                     @else
-                    <!-- Menu Login/Register untuk Guest -->
-                    <li><a href="{{route('login')}}">Login</a></li>
-                    <li><a href="{{route('register')}}">Register</a></li>
                     @endif
                 </ul>
             </div>

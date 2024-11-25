@@ -33,3 +33,7 @@ Route::post('register/action', [RegisterController::class, 'actionregister'])->n
 Route::get('menu/tampil', [MenuController::class, 'tampilmenu'])->name('tampilmenu')->middleware('auth');
 Route::get('menu/tambah', [MenuController::class, 'tambahmenu'])->name('tambahmenu')->middleware('auth');
 Route::post('menu/simpan', [MenuController::class, 'simpanMenu'])->name('simpanMenu')->middleware('auth');
+
+Route::get('menu/ubah/{id}', [MenuController::class, 'ubahmenu'])->name('ubahmenu')->middleware('auth');
+Route::post('menu/update', [MenuController::class, 'updatemenu'])->name('updatemenu')->middleware('auth');
+Route::get('menu/hapus/{id}', [MenuController::class, 'hapusmenu'])->name('hapusmenu')->middleware('auth');

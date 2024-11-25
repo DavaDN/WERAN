@@ -11,7 +11,9 @@ class MenuController extends Controller
 {
     public function tampilMenu()
     {
-        return view('tampilmenu');
+        $menu = Menu::select('*')->get();
+        
+        return view('tampilMenu', ['menu' => $menu]);
     }
 
     public function tambahMenu()
@@ -30,5 +32,35 @@ class MenuController extends Controller
 
         Session::flash('message', 'Input berhasil, anda sudah menambahkan menu terbaru!');
         return redirect('menu/tambah');
+    }
+
+    public function ubahmenu($id)
+
+    {
+        $menu = Menu::select('*')
+        ->where('id', $id)->get();
+
+        return view('ubahmenu', ['menu' => $menu]);
+    }
+
+    public function updatemenu(Request $request)
+
+    {
+        $menu = Menu::where('id', $request->id)->update([
+                'nama' => $request->nama,
+                'jenis' => $request->jenis,
+                'harga' => $request->harga,
+                'gambar' => $request->gambar,]);
+
+        return redirect()->route('tampilmenu');
+    }
+
+    public function hapusmenu($id)
+
+    {
+
+        $menu = Menu::where('id', $id)->delete();
+
+        return redirect()->route('tampilmenu');
     }
 }

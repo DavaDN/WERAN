@@ -1,3 +1,37 @@
+@section('konten')
+<h3>Ubah Data Menu</h3>
+  @foreach($menu as $m)
+    <form method="post" action="{{route('updatemenu')}}">
+      @csrf
+      <input type="hidden" name="id" value="{{$m->id}}">
+      <div class="form-group">
+        <label for="gambar">Gambar</label>
+        <input type="file" accept="image/png, image/jpeg, image/jpg" value="{{$m->gambar}}" name="gambar" required="">
+      </div>
+      <div class="form-group">
+        <label>Nama Menu</label>
+        <input type="text" name="nama" class="form-control" value="{{$m->nama}}" placeholder="Nama menu" required="">
+      </div>
+      <div class="form-group">
+        <label>Jenis</label>
+        <br>
+        <select name="jenis" value="{{$m->jenis}}" id="jenis">
+            <option value="Main Course">Main Course</option>
+            <option value="Appetizer">Appetizer</option>
+            <option value="Desert">Desert</option>    
+            <option value="Beverage">Beverage</option>
+      </select>
+      </div>
+      <div class="form-group">
+        <label>Harga</label>
+        <input type="number" name="harga" value="{{$m->harga}}" class="form-control" placeholder="Harga" required="">
+      </div>
+      <div class="form-group text-right">
+        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Update Data</button>
+      </div>
+    </form>
+  @endforeach
+@endsection
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,12 +151,6 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             Kategori <span class="caret"></span>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a>Main Course</a></li>
-                            <li><a>Appetizer</a></li>
-                            <li><a>Desert</a></li>
-                            <li><a>Beverage</a></li>
-                        </ul>
                     </li>
                     <!-- Menu Utama -->
                     <li><a href="/menu/tampil">Menu</a></li>
@@ -141,6 +169,9 @@
                         </ul>
                     </li>
                     @else
+                    <!-- Menu Login/Register untuk Guest -->
+                    <li><a href="{{route('login')}}">Login</a></li>
+                    <li><a href="{{route('register')}}">Register</a></li>
                     @endif
                 </ul>
             </div>
