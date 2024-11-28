@@ -25,6 +25,7 @@ class MenuController extends Controller
     {
         $menu = Menu::insert([
             'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
             'jenis' => $request->jenis,
             'harga' => $request->harga,
             'gambar' => $request->gambar
@@ -48,6 +49,7 @@ class MenuController extends Controller
     {
         $menu = Menu::where('id', $request->id)->update([
                 'nama' => $request->nama,
+                'deskripsi' => $request->deskripsi,
                 'jenis' => $request->jenis,
                 'harga' => $request->harga,
                 'gambar' => $request->gambar,]);

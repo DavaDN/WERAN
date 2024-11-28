@@ -1,3 +1,22 @@
+@section('konten')
+<h3>Tampil Data Kategori</h3>
+<a class="btn btn-success" href="{{route('tambahkategori')}}"><i class="fa fa-plus"></i> Tambah Kategori</a><br><br>
+<table class="table table-bordered table-hover">
+  <tr>
+    <th style="text-align: center">Nama kategori</th>
+    <th>Aksi</th>
+  </tr>
+  @foreach($kategori as $k) 
+  <tr>
+    <td style="text-align: center">{{$k->name}}</td>
+    <td>
+      <a href="/kategori/ubah/{{$k->id}}" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
+      <a href="/kategori/hapus/{{$k->id}}" onclick="return confirm('Apakah Anda Yakin Menghapus Data?');" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+    </td>
+  </tr>
+  @endforeach
+</table>
+@endsection
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +34,10 @@
             padding: 0;
             font-family: 'Georgia', serif;
             background-image: url("bg.jpg");
-            background-size: 100%; /* Mengecilkan ukuran background */
+            background-size: 100%; /* Mengecilkan ukuran background */ 
             background-position: center;
             color: #333;
-            height: 100%;
+            min-height: 100%;
             display: flex;
             flex-direction: column;
         }
@@ -119,7 +138,6 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="home" style="color: #d35400" >Beranda</a></li>
                     <!-- Menu Kategori -->
                     <li><a href="/kategori/tampil">Kategori</a></li>
                     <!-- Menu Utama -->

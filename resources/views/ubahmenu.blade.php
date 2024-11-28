@@ -1,4 +1,7 @@
 @section('konten')
+<a href="/menu/tampil" class="btn btn-light">
+<i class="fa fa-arrow-left"></i> Kembali</a>
+<div class="tampilan">
 <h3>Ubah Data Menu</h3>
   @foreach($menu as $m)
     <form method="post" action="{{route('updatemenu')}}">
@@ -11,6 +14,10 @@
       <div class="form-group">
         <label>Nama Menu</label>
         <input type="text" name="nama" class="form-control" value="{{$m->nama}}" placeholder="Nama menu" required="">
+      </div>
+      <div class="form-group">
+        <label>Deskripsi Menu</label>
+        <input type="text" name="deskripsi" class="form-control" value="{{$m->deskripsi}}" placeholder="Deskripsi menu" required="">
       </div>
       <div class="form-group">
         <label>Jenis</label>
@@ -32,6 +39,8 @@
     </form>
   @endforeach
 @endsection
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,8 +57,14 @@
             margin: 0;
             padding: 0;
             font-family: 'Georgia', serif;
-            background: url('https://source.unsplash.com/1920x1080/?restaurant,dining') no-repeat center center/cover;
+            background-image: url("bg.jpg");
+            background-size: 100%; /* Mengecilkan ukuran background */
+            background-repeat: no-repeat; /* Tidak mengulang gambar */
+            background-position: center;
             color: #333;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .navbar {
@@ -101,6 +116,7 @@
         }
 
         .container {
+            flex: 1;
             margin-top: 80px;
         }
 
@@ -114,11 +130,11 @@
         .footer {
             text-align: center;
             padding: 10px 0;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0);
             position: fixed;
             bottom: 0;
-            width: 100%;
-            color: #555;
+            width: 74.3%;
+            color: #bab2b2;
             font-size: 14px;
         }
 
@@ -130,6 +146,7 @@
         .footer a:hover {
             text-decoration: underline;
         }
+        
     </style>
 </head>
 <body>
@@ -145,38 +162,7 @@
                 <a class="navbar-brand" href="{{route('home')}}">WERAN - Web Restoran</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Menu Kategori -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            Kategori <span class="caret"></span>
-                        </a>
-                    </li>
-                    <!-- Menu Utama -->
-                    <li><a href="/menu/tampil">Menu</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    @if(Auth::check())
-                    <!-- Menu untuk Pengguna Login -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user"></i> {{Auth::user()->email}} <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a>Level: {{Auth::user()->role}}</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="{{route('actionlogout')}}"><i class="fa fa-power-off"></i> Log Out</a></li>
-                        </ul>
-                    </li>
-                    @else
-                    <!-- Menu Login/Register untuk Guest -->
-                    <li><a href="{{route('login')}}">Login</a></li>
-                    <li><a href="{{route('register')}}">Register</a></li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
+        </nav>
     <div class="container">
         <div class="content">
             @yield('konten')
@@ -188,3 +174,4 @@
 </body>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </html>
+

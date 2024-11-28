@@ -1,3 +1,19 @@
+@section('konten')
+<a href="/kategori/tampil" class="btn btn-light">
+  <i class="fa fa-arrow-left"></i> Kembali</a>
+<h3>Form Input Kategori</h3>
+<form action="{{route('simpankategori')}}" method="post">
+  @csrf
+  <div class="form-group">
+    <label>Nama Kategori</label>
+    <input type="text" name="name" class="form-control" placeholder="Nama Kategori" required="">
+  </div>
+  <div class="form-group text-right">
+    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan Data</button>
+  </div>
+</form>
+@endsection
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +32,10 @@
             font-family: 'Georgia', serif;
             background-image: url("bg.jpg");
             background-size: 100%; /* Mengecilkan ukuran background */
+            background-repeat: no-repeat; /* Tidak mengulang gambar */
             background-position: center;
             color: #333;
-            height: 100%;
+            min-height: 100%;
             display: flex;
             flex-direction: column;
         }
@@ -118,32 +135,7 @@
                 <a class="navbar-brand" href="{{route('home')}}">WERAN - Web Restoran</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="home" style="color: #d35400" >Beranda</a></li>
-                    <!-- Menu Kategori -->
-                    <li><a href="/kategori/tampil">Kategori</a></li>
-                    <!-- Menu Utama -->
-                    <li><a href="/menu/tampil">Menu</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    @if(Auth::check())
-                    <!-- Menu untuk Pengguna Login -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user"></i> {{Auth::user()->email}} <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a>Level: {{Auth::user()->role}}</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="{{route('actionlogout')}}"><i class="fa fa-power-off"></i> Log Out</a></li>
-                        </ul>
-                    </li>
-                    @else
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
+        </nav>
     <div class="container">
         <div class="content">
             @yield('konten')

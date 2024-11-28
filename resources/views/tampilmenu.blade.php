@@ -5,6 +5,7 @@
   <tr>
     <th>ID</th>
     <th>Nama Menu</th>
+    <th>Deskripsi Menu</th>
     <th>Jenis Menu</th>
     <th>Harga Menu</th>
     <th>Gambar Menu</th>
@@ -14,6 +15,7 @@
   <tr>
     <td>{{$m->id}}</td>
     <td>{{$m->nama}}</td>
+    <td>{{$m->deskripsi}}</td>
     <td>{{$m->jenis}}</td>
     <td>{{$m->harga}}</td>
     <td>{{$m->gambar}}</td>
@@ -41,8 +43,13 @@
             margin: 0;
             padding: 0;
             font-family: 'Georgia', serif;
-            background: url('https://source.unsplash.com/1920x1080/?restaurant,dining') no-repeat center center/cover;
+            background-image: url("bg.jpg");
+            background-size: 100%; /* Mengecilkan ukuran background */ 
+            background-position: center;
             color: #333;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .navbar {
@@ -94,6 +101,7 @@
         }
 
         .container {
+            flex: 1;
             margin-top: 80px;
         }
 
@@ -107,11 +115,11 @@
         .footer {
             text-align: center;
             padding: 10px 0;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0);
             position: fixed;
             bottom: 0;
             width: 100%;
-            color: #555;
+            color: #bab2b2;
             font-size: 14px;
         }
 
@@ -123,6 +131,7 @@
         .footer a:hover {
             text-decoration: underline;
         }
+        
     </style>
 </head>
 <body>
@@ -140,17 +149,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
                     <!-- Menu Kategori -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            Kategori <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a>Main Course</a></li>
-                            <li><a>Appetizer</a></li>
-                            <li><a>Desert</a></li>
-                            <li><a>Beverage</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="/kategori/tampil">Kategori</a></li>
                     <!-- Menu Utama -->
                     <li><a href="/menu/tampil">Menu</a></li>
                 </ul>

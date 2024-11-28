@@ -2,7 +2,7 @@
 <a href="/menu/tampil" class="btn btn-light">
   <i class="fa fa-arrow-left"></i> Kembali</a>
 <h3>Form Input Menu</h3>
-<form action="{{route('simpanMenu')}}" method="post">
+<form action="{{route('simpanmenu')}}" method="post">
   @csrf
   <div class="form-group">
     <label for="gambar">Gambar</label>
@@ -11,6 +11,10 @@
   <div class="form-group">
     <label>Nama Menu</label>
     <input type="text" name="nama" class="form-control" placeholder="Nama menu" required="">
+  </div>
+  <div class="form-group">
+    <label>Deskripsi Menu</label>
+    <input type="text" name="deskripsi" class="form-control" placeholder="Deskripsi menu" required="">
   </div>
   <div class="form-group">
     <label>Jenis</label>
@@ -49,8 +53,14 @@
             margin: 0;
             padding: 0;
             font-family: 'Georgia', serif;
-            background: url('https://source.unsplash.com/1920x1080/?restaurant,dining') no-repeat center center/cover;
+            background-image: url("bg.jpg");
+            background-size: 100%; /* Mengecilkan ukuran background */
+            background-repeat: no-repeat; /* Tidak mengulang gambar */
+            background-position: center;
             color: #333;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .navbar {
@@ -102,6 +112,7 @@
         }
 
         .container {
+            flex: 1;
             margin-top: 80px;
         }
 
@@ -115,11 +126,11 @@
         .footer {
             text-align: center;
             padding: 10px 0;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0);
             position: fixed;
             bottom: 0;
             width: 100%;
-            color: #555;
+            color: #bab2b2;
             font-size: 14px;
         }
 
@@ -131,6 +142,7 @@
         .footer a:hover {
             text-decoration: underline;
         }
+        
     </style>
 </head>
 <body>
